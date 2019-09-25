@@ -23,8 +23,8 @@ const londonCityHacker = (journey) => {
     }
   }
 
-  let busTotalPrice = payedTube * TUBE_TAX;
-  let tubeTotalPrice = payedBus * BUS_TAX;
+  let tubeTotalPrice = payedTube * TUBE_TAX;
+  let busTotalPrice = payedBus * BUS_TAX;
   let totalPrice = busTotalPrice + tubeTotalPrice;
 
   return `£${ totalPrice.toFixed(2) }`;
