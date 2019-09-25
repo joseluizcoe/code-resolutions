@@ -46,10 +46,10 @@ const londonCityHacker = (journey) => {
     }
   }
 
-  // calcula o preço total do ônibus
-  let busTotalPrice = payedTube * TUBE_TAX;
-  // calcula o preco total do metrô
-  let tubeTotalPrice = payedBus * BUS_TAX;
+  // calcula o preço total do metrô
+  let tubeTotalPrice = payedTube * TUBE_TAX;
+  // calcula o preco total do ônibus
+  let busTotalPrice = payedBus * BUS_TAX;
   // calcula o preço total da jornada
   let totalPrice = busTotalPrice + tubeTotalPrice;
 
