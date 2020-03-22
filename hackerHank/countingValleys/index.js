@@ -1,30 +1,31 @@
 function countingValleys(n, s) {
-  let stepsStringsArray = s.split('');
-  if (n != stepsStringsArray.length) { return 0 };
-  let valleys = 0;
+  if (n != s.length) { return 0; }
+
+  let steps = s.split('');
+  let stepsConvertedToNumber = [];
+  let valleysCount = 0;
   let possibleSteps = {
     U: 1,
     D: -1,
   };
 
-  let stepsConvertedToNumber = [];
+  steps.forEach(
+    (step, index) => {
+      let thisStepConvertedToNumber = possibleSteps[step];
+      let previousStepConvertedToNumber = stepsConvertedToNumber[index-1] || 0;
+      stepsConvertedToNumber[index] = thisStepConvertedToNumber + previousStepConvertedToNumber;
+      let willStartNewValley = (
+        stepsConvertedToNumber[index] < 0 && 
+        (previousStepConvertedToNumber == 0)
+      );
 
-  stepsStringsArray.forEach(
-    (item, index) => {
-      stepsConvertedToNumber[index] = possibleSteps[item];
-      let thisStepPosition = stepsConvertedToNumber[index];
-
-      let prev = stepsConvertedToNumber[index-1] || 0;
-      stepsConvertedToNumber[index] = thisStepPosition + prev;
-      if (stepsConvertedToNumber[index] < 0 && (prev == 0)) {
-        valleys++;
+      if (willStartNewValley) {
+        valleysCount++;
       }
-
     }
   );
 
-  return valleys;
+  return valleysCount;
 }
-
 
 module.exports = { countingValleys };
